@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+     <record id="returning_book_class_action" model="ir.actions.act_window">
+        <field name="name">Pengembalian Buku</field>
+        <field name="res_model">returning.book.class</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="returning_book_class_view_tree" model="ir.ui.view">
+        <field name="name">returning.book.class.view.tree</field>
+        <field name="model">returning.book.class</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="book_name"/>
+                <field name="member_name"/>
+                <field name="date_of_return"/>
+                <field name="date_of_return_now"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="returning_book_class_view_form" model="ir.ui.view">
+        <field name="name">returning.book.class.view.form</field>
+        <field name="model">returning.book.class</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <!-- main -->
+                    <group>
+                        <field name="state" widget="statusbar" nolable="1" options="{'clickable': '1'}"  />
+                        <group name="name" string="Information">
+                            <field name="borrowing_book_id"/>
+                            <field name="member_name"/>
+                            <field name="book_name"/>
+                            <field name="date_of_borrowing"/>
+                            <field name="date_of_return"/>
+                            <field name="date_of_return_now"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

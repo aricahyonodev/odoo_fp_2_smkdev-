@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="library_menu"
+        name="Library System"
+        />
+     <menuitem
+        id="library_menu_book"
+        name="Daftar Buku"
+        parent="library_menu"
+        action="book_class_action"
+        sequence="1"
+    />
+     <menuitem
+        id="library_menu_member"
+        name="Daftar Anggota"
+        parent="library_menu"
+        action="member_class_action"
+        sequence="2"
+    />
+    <menuitem
+        id="library_menu_borrowing"
+        name="Daftar Peminjam"
+        parent="library_menu"
+        action="borrowing_book_class_action"
+        sequence="3"
+    />
+    <menuitem
+        id="library_menu_returning"
+        name="Daftar Pengembalian"
+        parent="library_menu"
+        action="returning_book_class_action"
+        sequence="4"
+    />
+</odoo>

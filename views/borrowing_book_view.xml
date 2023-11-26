@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+     <record id="borrowing_book_class_action" model="ir.actions.act_window">
+        <field name="name">Peminjaman Buku</field>
+        <field name="res_model">borrowing.book.class</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="borrowing_book_class_view_tree" model="ir.ui.view">
+        <field name="name">borrowing.book.class.view.tree</field>
+        <field name="model">borrowing.book.class</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name"/>
+                <field name="book_id"/>
+                <field name="member_id"/>
+                <field name="date_of_borrowing"/>
+                <field name="date_of_return"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="borrowing_book_class_view_form" model="ir.ui.view">
+        <field name="name">borrowing.book.class.view.form</field>
+        <field name="model">borrowing.book.class</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="state" widget="statusbar" nolable="1" options="{'clickable': '1'}"  />
+                        <group name="name" string="Data">
+                            <field name="name"/>
+                            <field name="book_id"/>
+                            <field name="member_id"/>
+                            <field name="date_of_borrowing" readonly="1"/>
+                            <field name="date_of_return"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

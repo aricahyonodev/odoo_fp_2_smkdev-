@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="book_class_action" model="ir.actions.act_window">
+        <field name="name">Daftar Buku</field>
+        <field name="res_model">book.class</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="book_class_view_tree" model="ir.ui.view">
+        <field name="name">book.class.view.tree</field>
+        <field name="model">book.class</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="number_inventaris"/>
+                <field name="name"/>
+                <field name="author"/>
+                <field name="publication_year"/>
+                <field name="publisher"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="book_class_view_form" model="ir.ui.view">
+        <field name="name">book.class.view.form</field>
+        <field name="model">book.class</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="number_inventaris"/>
+                        <field name="name"/>
+                        <field name="author" widget="many2many_tags"/>
+                        <field name="publication_year"/>
+                        <field name="publisher"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>
