@@ -6,11 +6,11 @@ class BorrowingBookClass(models.Model):
     _description = 'Borrowing Book Class'
 
     # basic
-    name = fields.Char(string='Kode Peminjaman')
-    member_id = fields.Many2one('member.class','Nama Member')
-    book_id = fields.Many2one('book.class','Nama Buku')
+    name = fields.Char(string='Kode Peminjaman', required=True)
+    member_id = fields.Many2one('member.class','Nama Member', required=True)
+    book_id = fields.Many2one('book.class', 'Nama Buku', required=True)
     date_of_borrowing = fields.Date(string="Tanggal Peminjaman", default=fields.Date.today)
-    date_of_return = fields.Date(string="Tanggal Pengembalian")
+    date_of_return = fields.Date(string="Tanggal Pengembalian", required=True)
 
     state = fields.Selection(
         [('plan', 'Rancangan'), ('borrowed', 'Dipinjam')], string='Status', default='plan')

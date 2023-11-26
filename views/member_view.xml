@@ -20,4 +20,20 @@
         </field>
     </record>
 
+    <record id="member_class_view_form" model="ir.ui.view">
+        <field name="name">member.class.view.form</field>
+        <field name="model">member.class</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="nis"/>
+                        <field name="name"/>
+                        <field name="grade"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
 </odoo>

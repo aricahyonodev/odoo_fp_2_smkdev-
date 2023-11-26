@@ -16,7 +16,7 @@
                 <field name="name"/>
                 <field name="author"/>
                 <field name="publication_year"/>
-                <field name="publisher"/>
+                <field name="publisher_id"/>
             </tree>
         </field>
     </record>
@@ -32,7 +32,7 @@
                         <field name="name"/>
                         <field name="author" widget="many2many_tags"/>
                         <field name="publication_year"/>
-                        <field name="publisher"/>
+                        <field name="publisher_id"/>
                     </group>
                 </sheet>
             </form>
