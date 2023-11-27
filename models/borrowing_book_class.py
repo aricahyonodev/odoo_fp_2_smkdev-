@@ -6,7 +6,7 @@ class BorrowingBookClass(models.Model):
     _description = 'Borrowing Book Class'
 
     # basic
-    name = fields.Char(string='Kode Peminjaman', required=True)
+    name = fields.Char(string='No. Inventaris', required=True)
     member_id = fields.Many2one('member.class','Nama Member', required=True)
     book_id = fields.Many2one('book.class', 'Nama Buku', required=True)
     date_of_borrowing = fields.Date(string="Tanggal Peminjaman", default=fields.Date.today)

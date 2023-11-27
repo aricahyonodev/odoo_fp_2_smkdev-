@@ -1,0 +1,11 @@
+<odoo>
+    <report
+        id="action_member_borrowing_book"
+        string="Detail Peminjaman Buku  "
+        model="member.class"
+        report_type="qweb-html"
+        name="final_project_2.report_member_borrowing_book_template"
+        file="final_project_2.report_member_borrowing_book_template"
+        attachment_use="False"
+    />
+</odoo>

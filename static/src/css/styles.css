@@ -1,0 +1,60 @@
+
+main {
+    width: 900px;
+    padding: 60px;
+}
+
+
+.promise {
+   font-weight: 600;
+   font-size: 14px;
+   margin-bottom: 0px;
+}  
+
+ p {
+    margin-bottom: 6px;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tabel-perpust-activity {
+    margin-bottom: 28px;
+}
+
+.tabel-perpust-activity .header-table{
+    padding-bottom: 4px;
+    margin-bottom: 24px;
+    margin-top: 64px;
+    border-bottom: 1px solid black;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+}
+
+.footer .library-manager {
+    padding-top: 30px;
+}
+
+.line-signature {
+    border: 1px solid black;
+    margin-top: 100px;
+}
+
+td, th{
+    border: 1px solid black;
+}
+
+table {
+    caption-side: bottom;
+    border-collapse: collapse;
+    width: 96%;
+    margin: 0px auto;
+}
