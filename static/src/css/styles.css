@@ -1,28 +1,30 @@
-
-main {
-    width: 900px;
-    padding: 60px;
+/* remove default header */
+div.header {
+    display: none;
 }
 
-
+/* Global CSS */
+main {
+    width: 800px;
+    margin: 0 auto;
+    padding: 80px 0 160px 0;
+}
+ p {
+    margin-bottom: 6px;
+}
+header.header {
+    display: flex;
+    justify-content: space-between;
+}
 .promise {
    font-weight: 600;
    font-size: 14px;
    margin-bottom: 0px;
 }  
 
- p {
-    margin-bottom: 6px;
-}
-.header {
-    display: flex;
-    justify-content: space-between;
-}
-
 .tabel-perpust-activity {
     margin-bottom: 28px;
 }
-
 .tabel-perpust-activity .header-table{
     padding-bottom: 4px;
     margin-bottom: 24px;
@@ -32,22 +34,6 @@ main {
     font-size: 18px;
     font-weight: 600;
 }
-
-.footer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 80px;
-}
-
-.footer .library-manager {
-    padding-top: 30px;
-}
-
-.line-signature {
-    border: 1px solid black;
-    margin-top: 100px;
-}
-
 td, th{
     border: 1px solid black;
 }
@@ -58,3 +44,22 @@ table {
     width: 96%;
     margin: 0px auto;
 }
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+}
+.footer .library-manager {
+    padding-top: 30px;
+}
+.member, .library-manager {
+    width: 270px;
+}
+
+.line-signature {
+    border: 1px solid black;
+    margin-top: 124px;
+}
+
+

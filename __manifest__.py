@@ -11,6 +11,7 @@
         'data/book.class.csv',
         'data/borrowing.book.class.csv',
         'securitys/ir.model.access.csv',
+        'reports/paperformat_member_borrowing_book.xml',
         'reports/action_member_borrowing_book.xml',
         'reports/report_member_borrowing_book.xml',
         'views/borrowing_book_view.xml',

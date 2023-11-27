@@ -7,5 +7,6 @@
         name="final_project_2.report_member_borrowing_book_template"
         file="final_project_2.report_member_borrowing_book_template"
         attachment_use="False"
+        paperformat="final_project_2.report_paperformat_a4"
     />
 </odoo>
