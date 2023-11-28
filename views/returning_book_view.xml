@@ -12,6 +12,7 @@
         <field name="model">returning.book.class</field>
         <field name="arch" type="xml">
             <tree string="">
+                <field name="name"/>
                 <field name="book_name"/>
                 <field name="member_name"/>
                 <field name="date_of_return"/>

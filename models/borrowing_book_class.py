@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 class BorrowingBookClass(models.Model):
 
@@ -6,7 +6,7 @@ class BorrowingBookClass(models.Model):
     _description = 'Borrowing Book Class'
 
     # basic
-    name = fields.Char(string='No. Inventaris', required=True)
+    name = fields.Char(string='No. Inventaris')
     member_id = fields.Many2one('member.class','Nama Member', required=True)
     book_id = fields.Many2one('book.class', 'Nama Buku', required=True)
     date_of_borrowing = fields.Date(string="Tanggal Peminjaman", default=fields.Date.today)
@@ -15,3 +15,7 @@ class BorrowingBookClass(models.Model):
     state = fields.Selection(
         [('plan', 'Rancangan'), ('borrowed', 'Dipinjam')], string='Status', default='plan')
     
+    @api.model
+    def create(self, vals):
+       vals['name'] = self.env['ir.sequence'].next_by_code('borrowing.book.class')
+       return super(BorrowingBookClass, self).create(vals)

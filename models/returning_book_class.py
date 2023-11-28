@@ -6,6 +6,7 @@ class ReturningBookClass(models.Model):
     _description = 'Returning Book Class'
 
     # basic
+    name = fields.Char(string='No. Inventaris')
     borrowing_book_id = fields.Many2one('borrowing.book.class', 'Kode Peminjaman', required=True)
     member_name = fields.Char(string='Nama Anggota', related='borrowing_book_id.member_id.name')
     book_name = fields.Char(
@@ -25,3 +26,8 @@ class ReturningBookClass(models.Model):
     @api.onchange('borrowing_book_id')
     def _onchange_state_selection(self):
         self.state = self.borrowing_book_id.state
+
+    @api.model
+    def create(self, vals):
+       vals['name'] = self.env['ir.sequence'].next_by_code('returning.book.class')
+       return super(ReturningBookClass, self).create(vals)

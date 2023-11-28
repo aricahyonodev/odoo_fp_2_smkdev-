@@ -12,7 +12,6 @@
         <field name="model">member.class</field>
         <field name="arch" type="xml">
             <tree string="">
-                 <field name="id"/>
                  <field name="nis"/>
                  <field name="name"/>
                  <field name="grade"/>

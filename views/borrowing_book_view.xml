@@ -30,7 +30,6 @@
                     <group>
                         <field name="state" widget="statusbar" nolable="1" options="{'clickable': '1'}"  />
                         <group name="name" string="Data">
-                            <field name="name"/>
                             <field name="book_id"/>
                             <field name="member_id"/>
                             <field name="date_of_borrowing" readonly="1"/>
