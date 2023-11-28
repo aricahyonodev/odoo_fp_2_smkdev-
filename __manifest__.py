@@ -3,7 +3,7 @@
     'version': '1.0',
     'description': 'Final Project 2',
     'author': 'Ari Cahyono',
-    "depends": [],
+    "depends": ['mail'],
     'data': [
         'data/member.class.csv',
         'data/author.class.csv',

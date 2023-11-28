@@ -3,6 +3,7 @@ from odoo import models, fields, api
 class BorrowingBookClass(models.Model):
 
     _name = 'borrowing.book.class'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Borrowing Book Class'
 
     # basic
@@ -18,4 +19,8 @@ class BorrowingBookClass(models.Model):
     @api.model
     def create(self, vals):
        vals['name'] = self.env['ir.sequence'].next_by_code('borrowing.book.class')
-       return super(BorrowingBookClass, self).create(vals)
+       record = super(BorrowingBookClass, self).create(vals)
+       
+       record.message_post(body="Peminjaman buku berhasil!")
+
+       return record 

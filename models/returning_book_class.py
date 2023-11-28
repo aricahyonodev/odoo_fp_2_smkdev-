@@ -3,6 +3,7 @@ from odoo import models, fields, api
 class ReturningBookClass(models.Model):
 
     _name = 'returning.book.class'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Returning Book Class'
 
     # basic
@@ -30,4 +31,8 @@ class ReturningBookClass(models.Model):
     @api.model
     def create(self, vals):
        vals['name'] = self.env['ir.sequence'].next_by_code('returning.book.class')
-       return super(ReturningBookClass, self).create(vals)
+       record = super(ReturningBookClass, self).create(vals)
+       
+       record.message_post(body="Pengembalian buku berhasil!")
+
+       return record 
