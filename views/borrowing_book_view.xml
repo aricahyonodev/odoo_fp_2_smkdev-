@@ -30,8 +30,8 @@
                     <group>
                         <field name="state" widget="statusbar" nolable="1" options="{'clickable': '1'}"  />
                         <group name="name" string="Data">
-                            <field name="book_id"/>
-                            <field name="member_id"/>
+                            <field name="book_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True }"/>
+                            <field name="member_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True }"/>
                             <field name="date_of_borrowing" readonly="1"/>
                             <field name="date_of_return"/>
                         </group>

@@ -32,7 +32,7 @@
                     <group>
                         <field name="state" widget="statusbar" nolable="1" options="{'clickable': '1'}"  />
                         <group name="name" string="Information">
-                            <field name="borrowing_book_id"/>
+                            <field name="borrowing_book_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True }"/>
                             <field name="member_name"/>
                             <field name="book_name"/>
                             <field name="date_of_borrowing"/>
