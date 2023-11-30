@@ -32,8 +32,10 @@
                         <group name="name" string="Data">
                             <field name="book_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True }"/>
                             <field name="member_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True }"/>
-                            <field name="date_of_borrowing" readonly="1"/>
-                            <field name="date_of_return"/>
+                            <field name="date_of_borrowing" />
+                            <field name="length_of_book_borrowing"/>
+                            <field name="date_of_return" />
+                            <field name="library_cash"/>
                         </group>
                     </group>
                     <div class="oe_chatter">
@@ -45,6 +47,7 @@
                 
             </form>
         </field>
+
     </record>
 
 </odoo>

@@ -13,9 +13,9 @@ class ReturningBookClass(models.Model):
     book_name = fields.Char(
         string='Judul Buku', related='borrowing_book_id.book_id.name')
 
-    date_of_borrowing = fields.Date(
+    date_of_borrowing = fields.Char(
         string="Tanggal Peminjaman", related='borrowing_book_id.date_of_borrowing')
-    date_of_return = fields.Date(
+    date_of_return = fields.Char(
         string="Batas Pengembalian", related='borrowing_book_id.date_of_return')
     
     date_of_return_now = fields.Date(

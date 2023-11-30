@@ -1,2 +1,2 @@
-id,name,member_id:id,book_id:id,date_of_borrowing,date_of_return,state
-1,PB00001,S001,B001,2023-11-27,2023-12-02,borrowed
+id,name,member_id:id,book_id:id,date_of_borrowing,date_of_return,state,length_of_book_borrowing,library_cash
+1,PB00001,S001,B001,30-11-2023,07-12-2023,borrowed,7,1000
