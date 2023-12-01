@@ -16,7 +16,7 @@
                 <field name="member_id"/>
                 <field name="member_grade" />
                 <field name="date_of_borrowing"/>
-                <field name="date_of_return"/>
+                <field name="admin_name"/>
             </tree>
         </field>
     </record>
@@ -27,8 +27,12 @@
         <field name="arch" type="xml">
             <form string="">
                 <sheet>
+                    <field name="state" widget="statusbar" nolable="1" options="{'clickable': '1'}"  />
+                    <group name="name" string="Informasi Petugas Perpustakaan">
+                        <field name="admin_name" />
+                        <field name="admin_email" />
+                    </group>
                     <group>
-                        <field name="state" widget="statusbar" nolable="1" options="{'clickable': '1'}"  />
                         <group name="name" string="Informasi Pengguna">
                             <field name="member_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True }"/>
                             <field name="member_grade" />

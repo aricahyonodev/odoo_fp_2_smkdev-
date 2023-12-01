@@ -15,8 +15,8 @@
                 <field name="name"/>
                 <field name="member_name"/>
                 <field name="member_grade"/>
-                <field name="date_of_return"/>
                 <field name="date_of_return_now" options="{'datepicker': {'format': 'dd-MM-yyyy'}}"/>
+                <field name="admin_name" />
             </tree>
         </field>
     </record>
@@ -29,8 +29,12 @@
             <form string="">
                 <sheet>
                     <!-- main -->
+                    <field name="state" widget="statusbar" nolable="1" options="{'clickable': '1'}"  />
+                    <group name="name" string="Informasi Petugas Perpustakaan">
+                        <field name="admin_name" />
+                        <field name="admin_email" />
+                    </group>
                     <group>
-                        <field name="state" widget="statusbar" nolable="1" options="{'clickable': '1'}"  />
                         <group name="name" string="Data">
                             <field name="borrowing_book_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True }"/>
                             <field name="member_name" />

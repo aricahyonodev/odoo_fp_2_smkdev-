@@ -15,6 +15,10 @@ class BorrowingBookClass(models.Model):
     member_id = fields.Many2one('member.class','Nama Member', required=True)
     member_grade = fields.Char(string="Kelas", related="member_id.grade")
     member_address = fields.Char(string="Alamat", related="member_id.address")
+    admin_name = fields.Char(
+        string='Nama Admin', default=lambda self: self.env.user.name, readonly=True)
+    admin_email = fields.Char(
+        string='Email', default=lambda self: self.env.user.email, readonly=True)
 
     # Date Borrowing Book
     date_of_borrowing = fields.Char(
@@ -43,7 +47,11 @@ class BorrowingBookClass(models.Model):
     @api.constrains('borrowing_book_line_ids')
     def _check_borrowing_book_lines(self):
         if len(self.borrowing_book_line_ids) == 0:
-            raise ValidationError("Peminjaman buku gagal! Tidak dapat membuat peminjaman dengan detail buku.")
+            raise ValidationError("Belum ada buku yang dipilih!")
+    @api.constrains('state')
+    def _check_state(self):
+        if self.state == "plan":
+            raise ValidationError("Mohon ubah status ke pinjam!")
     
     @api.depends('length_of_book_borrowing', 'borrowing_book_line_ids')
     @api.onchange('length_of_book_borrowing', 'borrowing_book_line_ids')

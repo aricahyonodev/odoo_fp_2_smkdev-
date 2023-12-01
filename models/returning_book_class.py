@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 class ReturningBookClass(models.Model):
 
@@ -9,13 +10,18 @@ class ReturningBookClass(models.Model):
     name = fields.Char(string='No. Inventaris')
     borrowing_book_id = fields.Many2one('borrowing.book.class', 'Kode Peminjaman', required=True)
 
+    # Admin
+    admin_name = fields.Char(string='Nama Admin',
+                              related='borrowing_book_id.admin_name')
+    admin_email = fields.Char(string='Nama Admin',
+                              related='borrowing_book_id.admin_email')
     # Member
     member_name = fields.Char(string='Nama Anggota', related='borrowing_book_id.member_id.name')
     member_grade = fields.Char(
         string="Kelas", related="borrowing_book_id.member_id.grade")
     member_address = fields.Char(
         string="Alamat", related="borrowing_book_id.member_id.address")
-    
+   
     # Date Borrowing BOok
     date_of_borrowing = fields.Char(
         string="Tanggal Peminjaman", related='borrowing_book_id.date_of_borrowing')
@@ -32,6 +38,11 @@ class ReturningBookClass(models.Model):
     returning_book_line_ids = fields.One2many(
         string='Judul Buku', related='borrowing_book_id.borrowing_book_line_ids')
 
+    @api.constrains('state')
+    def _check_state(self):
+        if self.state == "borrowed":
+            raise ValidationError("Mohon ubah status ke simpan!")
+        
     @api.onchange('borrowing_book_id')
     def _onchange_state_selection(self):
         self.state = self.borrowing_book_id.state
