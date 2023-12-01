@@ -64,8 +64,6 @@
                                     <td><span t-field="o.book_id.name" /></td>
                                     <td><span t-field="o.book_id.publication_year" /></td>
                                     <td><span t-field="o.book_id.publisher" /></td>
-                                    <!-- <td><span t-field="o.date_of_borrowing" /></td> -->
-                                    <!-- <td><span t-field="o.date_of_return" /></td> -->
                                 </tr>
                             </t>
                             
@@ -82,7 +80,6 @@
 
                     <!-- Footer -->
                     <footer class="footer">
-                        <!-- signature -->
                         <div class="library-manager">
                             <p>Pengelola Perpustakaan</p>
                             <div class="line-signature"></div>

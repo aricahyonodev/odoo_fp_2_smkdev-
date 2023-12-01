@@ -14,7 +14,7 @@
             <tree string="">
                 <field name="number_inventaris"/>
                 <field name="name"/>
-                <field name="author"/>
+                <field name="book_authors"/>
                 <field name="publication_year"/>
                 <field name="publisher_id"/>
             </tree>

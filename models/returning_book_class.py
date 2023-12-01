@@ -6,7 +6,6 @@ class ReturningBookClass(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Returning Book Class'
 
-    # basic
     name = fields.Char(string='No. Inventaris')
     borrowing_book_id = fields.Many2one('borrowing.book.class', 'Kode Peminjaman', required=True)
 
@@ -17,9 +16,7 @@ class ReturningBookClass(models.Model):
     member_address = fields.Char(
         string="Alamat", related="borrowing_book_id.member_id.address")
     
-    returning_book_line_ids = fields.One2many(
-        string='Judul Buku', related='borrowing_book_id.borrowing_book_line_ids')
-
+    # Date Borrowing BOok
     date_of_borrowing = fields.Char(
         string="Tanggal Peminjaman", related='borrowing_book_id.date_of_borrowing')
     date_of_return = fields.Char(
@@ -30,6 +27,10 @@ class ReturningBookClass(models.Model):
         
     state = fields.Selection(
         [('borrowed', 'Dipinjam'), ('finished', 'Selesai'), ], string='Status')
+
+    # Make line
+    returning_book_line_ids = fields.One2many(
+        string='Judul Buku', related='borrowing_book_id.borrowing_book_line_ids')
 
     @api.onchange('borrowing_book_id')
     def _onchange_state_selection(self):

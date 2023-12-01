@@ -5,7 +5,6 @@ class MemberClass(models.Model):
     _name = 'member.class'
     _description = 'Member Class'
 
-    #basic
     nis = fields.Char(string='NIS', required=True)
     name = fields.Char(string='Nama Lengkap', required=True)
     grade = fields.Char(string='Kelas', required=True)

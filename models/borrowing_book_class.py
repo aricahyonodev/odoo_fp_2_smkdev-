@@ -9,30 +9,30 @@ class BorrowingBookClass(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Borrowing Book Class'
 
-    # basic
     name = fields.Char(string='No. Inventaris')
+
+    # Member
     member_id = fields.Many2one('member.class','Nama Member', required=True)
     member_grade = fields.Char(string="Kelas", related="member_id.grade")
     member_address = fields.Char(string="Alamat", related="member_id.address")
 
-    # total_book = fields.Integer(string="Total Buku")
-    
+    # Date Borrowing Book
     date_of_borrowing = fields.Char(
         string="Tanggal Peminjaman", default=datetime.now().strftime('%d-%m-%Y'), required=True, readonly=True)
     date_of_return = fields.Char(
         string="Tanggal Pengembalian", compute="_compute_date_of_return")
-
     length_of_book_borrowing = fields.Selection(
         [('7', '7 Hari'), ('14', '14 hari'), ('21', '21 Hari')], string='Lama Pinjam Buku', default='7')
-   
     library_cash = fields.Char(
         string='Biaya Peminjaman', readonly=True, compute="_compute_library_cash", create=True)
     
     state = fields.Selection(
         [('plan', 'Rancangan'), ('borrowed', 'Dipinjam')], string='Status', default='plan')
     
+    # Make line
     borrowing_book_line_ids = fields.One2many(
         'borrowing.book.line', 'borrowing_book_line_id', required=True)
+    
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].next_by_code('borrowing.book.class')
@@ -45,8 +45,8 @@ class BorrowingBookClass(models.Model):
         if len(self.borrowing_book_line_ids) == 0:
             raise ValidationError("Peminjaman buku gagal! Tidak dapat membuat peminjaman dengan detail buku.")
     
-    @api.depends("length_of_book_borrowing")
-    @api.onchange('length_of_book_borrowing')
+    @api.depends('length_of_book_borrowing', 'borrowing_book_line_ids')
+    @api.onchange('length_of_book_borrowing', 'borrowing_book_line_ids')
     def _compute_date_of_return(self):
       for rec in self:
         length_of_book_borrowing = int(rec.length_of_book_borrowing)
@@ -59,19 +59,6 @@ class BorrowingBookClass(models.Model):
             cost_length_of_borrowing = 2500
         rec.library_cash = "Rp. " + str(cost_length_of_borrowing * len(self.borrowing_book_line_ids)) 
 
-    @api.onchange('borrowing_book_line_ids')
-    def onchange_borrowing_book_line_ids(self):
-      length_of_book_borrowing = int(self.length_of_book_borrowing)
-      date_of_return =  datetime.now() + timedelta(days=length_of_book_borrowing)
-      self.date_of_return = date_of_return.strftime('%d-%m-%Y')
-
-      cost_table = math.floor(length_of_book_borrowing / 7)
-      cost_length_of_borrowing = 1000 * cost_table
-      if cost_table > 2:
-        cost_length_of_borrowing = 2500
-      self.library_cash = "Rp. " + str(cost_length_of_borrowing * len(self.borrowing_book_line_ids)) 
-
-    
 class BorrowingBookLine(models.Model):
    _name        = 'borrowing.book.line'
    _description = 'Borrowing Book Line'
@@ -79,6 +66,7 @@ class BorrowingBookLine(models.Model):
    borrowing_book_line_id = fields.Many2one('borrowing.book.class', string="dwa")
    book_id = fields.Many2one('book.class', string="Nama Buku")
    list_author = fields.Many2many(related='book_id.author')
+   
    book_authors = fields.Char(string="Penulis", compute="_compute_book_authors")
    book_year = fields.Char(string="Tahun", related='book_id.publication_year')
    book_publisher = fields.Char(string="Penerbit", related="book_id.publisher")
