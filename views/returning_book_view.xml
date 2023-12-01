@@ -13,8 +13,8 @@
         <field name="arch" type="xml">
             <tree string="">
                 <field name="name"/>
-                <field name="book_name"/>
                 <field name="member_name"/>
+                <field name="member_grade"/>
                 <field name="date_of_return"/>
                 <field name="date_of_return_now" options="{'datepicker': {'format': 'dd-MM-yyyy'}}"/>
             </tree>
@@ -31,15 +31,31 @@
                     <!-- main -->
                     <group>
                         <field name="state" widget="statusbar" nolable="1" options="{'clickable': '1'}"  />
-                        <group name="name" string="Information">
+                        <group name="name" string="Data">
                             <field name="borrowing_book_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True }"/>
-                            <field name="member_name"/>
-                            <field name="book_name"/>
-                            <field name="date_of_borrowing"/>
-                            <field name="date_of_return"/>
+                            <field name="member_name" />
+                            <field name="member_grade" />
+                            <field name="member_address" />
+                        </group>
+                        <group name="name" string="Informasi Tanggal">
+                            <field name="date_of_borrowing" />
+                            <field name="date_of_return" />
                             <field name="date_of_return_now" options="{'datepicker': {'format': 'dd-MM-yyyy'}}"/>
                         </group>
                     </group>
+                    
+                     <notebook>
+                        <page string="Daftar Buku">
+                            <field name="returning_book_line_ids" nolable="1" options="{'reload_on_button' : true }">
+                                <tree edit="true" editable="top" create="true" delete="true">       
+                                    <field name="book_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True }"/>
+                                    <field name="book_authors" />
+                                    <field name="book_year" />
+                                    <field name="book_publisher" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                     <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers"/>
                         <field name="activity_ids"/>

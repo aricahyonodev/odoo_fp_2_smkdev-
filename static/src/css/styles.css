@@ -41,8 +41,7 @@ td, th{
 table {
     caption-side: bottom;
     border-collapse: collapse;
-    width: 96%;
-    margin: 0px auto;
+    width: 100%;
 }
 
 .footer {
@@ -62,4 +61,14 @@ table {
     margin-top: 124px;
 }
 
+.description {
+    margin-bottom: 8px;
+    display: flex;
+}
+.description-text, .description-value {
+    flex: 1;
+}
 
+small {
+    font-weight: 400;
+}

@@ -13,3 +13,4 @@ class BookClass(models.Model):
     publisher_id = fields.Many2one('publisher.class','Penerbit')
     publisher = fields.Char(
         string='Penerbit', related='publisher_id.name' )
+

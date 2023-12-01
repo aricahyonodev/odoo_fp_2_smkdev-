@@ -8,43 +8,64 @@
                             <link type="text/css" rel="stylesheet" href="/final_project_2/static/src/css/styles.css"/>
                     </t>
 
-                    <header class="header">
-                        <div class="school-information">
-                            <p>PERPUSTAKAN SMK DEV</p>
-                            <p>Jl. Jeruk Purut No. 45, Bandung</p>
-                        </div>
-                        <div class="member">
-                            <p>Nama :  <span  t-field="docs.name"/></p>
-                            <p>NIS : <span  t-field="docs.nis"/></p>
-                            <p>Kelas : <span  t-field="docs.grade"/></p>
-                        </div>
-                    </header>
-
                     <!-- Table Perpust Activity  -->
                     <div class="tabel-perpust-activity">
                         <header class="header-table">
+                        <img t-att-src="'/final_project_2/static/src/images/icon_smk_dev.png'" style="max-height: 60px;"/>
                             <p>
-                                DAFTAR PINJAMAN BUKU PAKET PERORANGAN 
+                                DAFTAR PINJAMAN BUKU PAKET PERPUSTAKAN SMK DEV
                                 <br/> 
                                 TAHUN AJARAN PELAJARAN 2023/2024
+                                <br/>
+                                <small>Jl. Jeruk Purut No. 45, Bandung</small>
                             </p>
                         </header>
+
+                        <div class="description">
+                            <div class="description-text">
+                                <b>Informasi Pengguna</b>
+                                <p>NIS </p>
+                                <p>Nama </p>
+                                <p>Kelas </p>
+                                <p>Alamat </p>
+                                <b>Informasi Peminjaman</b>
+                                <p>No. Inventaris</p>
+                                <p>Tanggal Kembali</p>
+                                <p>Batas Pengembalian</p>
+                                <p>Lama Peminjaman</p>
+                                <p>Biaya Peminjaman</p>
+                            </div>
+                            <div class="description-value">
+                                <br/>
+                                <p>: <span  t-field="docs.nis"/></p>
+                                <p>:  <span  t-field="docs.name"/></p>
+                                <p>: <span  t-field="docs.grade"/></p>
+                                <p>: <span  t-field="docs.address"/></p>
+                                <br/>
+                                <p>: <span t-field="docs.borrowing_book_ids.name" /></p>
+                                <p>: <span t-field="docs.borrowing_book_ids.date_of_borrowing" /></p>
+                                <p>: <span t-field="docs.borrowing_book_ids.date_of_return" /></p>
+                                <p>: <span t-field="docs.borrowing_book_ids.length_of_book_borrowing" /></p>
+                                <p>: <span t-field="docs.borrowing_book_ids.library_cash" /></p>
+                            </div>
+                        </div>
+
                         <table>
                             <tr>
                                 <th>No.</th>
                                 <th>Judul Buku</th>
-                                <th>No. Inventaris</th>
-                                <th>Tanggal Pinjam</th>
-                                <th>Tanggal Kembali</th>
+                                <th>Tahun Terbit</th>
+                                <th>Penerbit</th>
                             </tr>
                             
-                            <t t-foreach="docs.borrowing_book_ids" t-as="o">
+                            <t t-foreach="docs.borrowing_book_ids.borrowing_book_line_ids" t-as="o">
                                 <tr>
                                     <td><span t-esc="o_index + 1" /></td>
                                     <td><span t-field="o.book_id.name" /></td>
-                                    <td><span t-field="o.name"/></td>
-                                    <td><span t-field="o.date_of_borrowing" /></td>
-                                    <td><span t-field="o.date_of_return" /></td>
+                                    <td><span t-field="o.book_id.publication_year" /></td>
+                                    <td><span t-field="o.book_id.publisher" /></td>
+                                    <!-- <td><span t-field="o.date_of_borrowing" /></td> -->
+                                    <!-- <td><span t-field="o.date_of_return" /></td> -->
                                 </tr>
                             </t>
                             

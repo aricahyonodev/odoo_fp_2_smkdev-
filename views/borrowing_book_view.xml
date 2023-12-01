@@ -13,8 +13,8 @@
         <field name="arch" type="xml">
             <tree string="">
                 <field name="name"/>
-                <field name="book_id"/>
                 <field name="member_id"/>
+                <field name="member_grade" />
                 <field name="date_of_borrowing"/>
                 <field name="date_of_return"/>
             </tree>
@@ -29,15 +29,32 @@
                 <sheet>
                     <group>
                         <field name="state" widget="statusbar" nolable="1" options="{'clickable': '1'}"  />
-                        <group name="name" string="Data">
-                            <field name="book_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True }"/>
+                        <group name="name" string="Informasi Pengguna">
                             <field name="member_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True }"/>
-                            <field name="date_of_borrowing" />
+                            <field name="member_grade" />
+                            <field name="member_address" />
+                        </group>
+                        <group name="name" string="Informasi Tanggal">
                             <field name="length_of_book_borrowing"/>
+                            <field name="date_of_borrowing" />
                             <field name="date_of_return" />
                             <field name="library_cash"/>
                         </group>
                     </group>
+                   
+                    <notebook>
+                        <page string="Daftar Buku">
+                            <field name="borrowing_book_line_ids">
+                                <tree options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True }">       
+                                    <field name="book_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True }"/>
+                                    <field name="book_authors" />
+                                    <field name="book_year" />
+                                    <field name="book_publisher" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
                     <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers"/>
                         <field name="activity_ids"/>
@@ -48,6 +65,23 @@
             </form>
         </field>
 
+    </record>
+
+    <record id="view_borrowing_line_popup" model="ir.ui.view">
+        <field name="name">borrowing.book.line.popup.view</field>
+        <field name="model">borrowing.book.line</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="book_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True }"/>
+                        <field name="book_authors" />
+                        <field name="book_year" />
+                        <field name="book_publisher" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
     </record>
 
 </odoo>

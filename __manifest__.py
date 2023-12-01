@@ -9,7 +9,7 @@
         'data/author.class.csv',
         'data/publisher.class.csv',
         'data/book.class.csv',
-        'data/borrowing.book.class.csv',
+        # 'data/borrowing.book.class.csv',
         'securitys/ir.model.access.csv',
         'sequences/sequence_returning_book.xml',
         'sequences/sequence_borrowing_book.xml',

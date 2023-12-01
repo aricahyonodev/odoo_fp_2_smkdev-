@@ -1,3 +1,3 @@
-id,nis,name,grade
-S001,001,Ari Cahyono,IX
-S002,002,Tifani,IX
+id,nis,name,grade,address
+S001,001,Ari Cahyono,IX, Jl. Tanjungsari Jaya 38
+S002,002,Tifani,IX, Jl. Kusuma Bangsa 4A

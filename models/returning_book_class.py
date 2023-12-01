@@ -9,9 +9,16 @@ class ReturningBookClass(models.Model):
     # basic
     name = fields.Char(string='No. Inventaris')
     borrowing_book_id = fields.Many2one('borrowing.book.class', 'Kode Peminjaman', required=True)
+
+    # Member
     member_name = fields.Char(string='Nama Anggota', related='borrowing_book_id.member_id.name')
-    book_name = fields.Char(
-        string='Judul Buku', related='borrowing_book_id.book_id.name')
+    member_grade = fields.Char(
+        string="Kelas", related="borrowing_book_id.member_id.grade")
+    member_address = fields.Char(
+        string="Alamat", related="borrowing_book_id.member_id.address")
+    
+    returning_book_line_ids = fields.One2many(
+        string='Judul Buku', related='borrowing_book_id.borrowing_book_line_ids')
 
     date_of_borrowing = fields.Char(
         string="Tanggal Peminjaman", related='borrowing_book_id.date_of_borrowing')

@@ -4,4 +4,5 @@ access_member_class_admin,member.class.admin,model_member_class,base.group_user,
 access_publisher_class_admin,publisher.class.admin,model_publisher_class,base.group_user,1,1,1,1
 access_author_class_admin,author.class.admin,model_author_class,base.group_user,1,1,1,1
 borrowing_book_class_admin,borrowing.book.class.admin,model_borrowing_book_class,base.group_user,1,1,1,1
+borrowing_book_line_admin,borrowing.book.line.admin,model_borrowing_book_line,base.group_user,1,1,1,1
 returning_book_class_admin,returning.book.class.admin,model_returning_book_class,base.group_user,1,1,1,1
